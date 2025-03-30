@@ -7,7 +7,8 @@ import (
 )
 
 func main() {
-	pokeClient := pokeapi.NewClient(5 * time.Second)
+	cacheInterval := 5 * time.Minute
+	pokeClient := pokeapi.NewClient(5*time.Second, cacheInterval)
 	cfg := &config{
 		pokeapiClient: pokeClient,
 	}
