@@ -14,7 +14,7 @@ func commandList(cfg *config, args ...string) error {
 	if name == "party" {
 		fmt.Println("Your Party:")
 		for _, pokemon := range cfg.partyPokemon {
-			fmt.Printf(" - %s\n", pokemon.Name)
+			fmt.Printf(" - %s \n", pokemon.Name)
 		}
 	}
 	if name == "pc" {
