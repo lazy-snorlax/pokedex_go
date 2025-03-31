@@ -1,7 +1,6 @@
 package pokecache
 
 import (
-	"fmt"
 	"sync"
 	"time"
 )
@@ -30,7 +29,7 @@ func (c *Cache) Add(key string, val []byte) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 	c.cacheEntries[key] = CacheEntry{createdAt: time.Now(), val: val}
-	fmt.Printf("Adding to cache - key: %v  val: %v \n", key, val)
+	// fmt.Printf("Adding to cache - key: %v  val: %v \n", key, val)
 }
 
 func (c *Cache) Get(key string) ([]byte, bool) {
@@ -38,7 +37,7 @@ func (c *Cache) Get(key string) ([]byte, bool) {
 	defer c.mu.RUnlock()
 	entry, exists := c.cacheEntries[key]
 	if exists {
-		fmt.Printf("Fetching from cache - key: %v  val: %v \n", key, entry.val)
+		// fmt.Printf("Fetching from cache - key: %v  val: %v \n", key, entry.val)
 		return entry.val, true
 	}
 	return nil, false

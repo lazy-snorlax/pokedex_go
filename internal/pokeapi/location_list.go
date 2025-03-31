@@ -16,7 +16,7 @@ func (c *Client) ListLocations(pageURL *string) (RespShallowLocations, error) {
 	locationsResp := RespShallowLocations{}
 
 	cacheEntry, exists := c.cache.Get(url)
-	fmt.Printf("Checking cache - URL: %v  CacheEntry: %v  Exists: %v \n", url, cacheEntry, exists)
+	// fmt.Printf("Checking cache - URL: %v  CacheEntry: %v  Exists: %v \n", url, cacheEntry, exists)
 	if exists {
 		fmt.Println("Pulling from cache")
 		err := json.Unmarshal(cacheEntry, &locationsResp)
