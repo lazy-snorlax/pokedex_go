@@ -17,12 +17,25 @@ type config struct {
 	partyPokemon  map[string]pokeapi.Pokemon
 	storedPokemon map[string]pokeapi.Pokemon
 	caughtPokemon map[string]pokeapi.Pokemon
+
+	// bagItems map[string]pokeapi.Item
 }
 
 func startRepl(cfg *config) {
 	reader := bufio.NewScanner(os.Stdin)
+	fmt.Println("Welcome to Pokemon Terminal Edition")
+	fmt.Println("===================================")
+	fmt.Println("You are currently on Route 1.")
+	fmt.Println("Use 'walk' to traverse the route. You may get a random encounter")
+	fmt.Println("Use 'help' for a list of commands")
+	starter, err := cfg.pokeapiClient.GetPokemon("pikachu")
+	if err != nil {
+		return
+	}
+	cfg.partyPokemon[starter.Name] = starter
+
 	for {
-		fmt.Print("Pokedex > ")
+		fmt.Print("Player > ")
 		reader.Scan()
 
 		inputs := cleanInput(reader.Text())
@@ -65,6 +78,11 @@ func getCommands() map[string]cliCommand {
 			name:        "help",
 			description: "Displays a help message",
 			callback:    commandHelp,
+		},
+		"walk": {
+			name:        "walk>",
+			description: "Walk along a route",
+			callback:    commandWalk,
 		},
 		"explore": {
 			name:        "explore <location_name>",
