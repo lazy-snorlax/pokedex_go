@@ -33,6 +33,7 @@ func startRepl(cfg *config) {
 		return
 	}
 	cfg.partyPokemon[starter.Name] = starter
+	cfg.caughtPokemon[starter.Name] = starter
 
 	for {
 		fmt.Print("Player > ")
