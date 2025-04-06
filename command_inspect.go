@@ -15,7 +15,7 @@ func commandInspect(cfg *config, args ...string) error {
 	if !exists {
 		fmt.Println("you have not caught that pokemon")
 	} else {
-		generateImg(pokemon.Sprites.FrontDefault)
+		generateImg(pokemon.Sprites.Other.OfficialArtwork.FrontDefault)
 		fmt.Printf("Name: %s \n", pokemon.Name)
 		fmt.Printf("Height: %v \n", pokemon.Height)
 		fmt.Printf("Weight: %v \n", pokemon.Weight)
